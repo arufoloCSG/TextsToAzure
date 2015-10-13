@@ -43,22 +43,23 @@ function InsertData($from, $body, $conn)
 {	
     try
     {
-        $tsql = "INSERT INTO TextQueue (PhoneNumber, TextContent) VALUES (".$from.", ".$body.")";
-        //Insert query
+        $tsql = "INSERT INTO TextQueue (PhoneNumber, TextContent) VALUES ('".$from."', '".$body."' )";
         $insertReview = sqlsrv_query($conn, $tsql);
+		
         if($insertReview == FALSE)
+		{
             die(FormatErrors( sqlsrv_errors())); 
+		}
         while($row = sqlsrv_fetch_array($insertReview, SQLSRV_FETCH_ASSOC))
-        {   
+        { 
             echo($row['ID']);
-        }
-        sqlsrv_free_stmt($insertReview);
-        sqlsrv_close($conn);
+        }		
     }
     catch(Exception $e)
     {
         echo("Error!");
     }
+	
 }
 
 ?>
