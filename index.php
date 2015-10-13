@@ -6,10 +6,17 @@ header('Content-type: text/xml');
 $from = $_REQUEST['From'];
 $body = $_REQUEST['Body'];
 echo '<?xml version="1.0" encoding="UTF-8"?>';
+echo '<Response><Message>Thank you for your reply. FROM: '.$from.' BODY: '.$body.'</Message></Response>';
 
- 
+$conn = OpenConnection();
+echo 'Connection to Azure Established';
+
 if(!empty($from)) {
-	InsertData($from, $body);
+	InsertData($from, $body, $conn);
+}
+else
+{
+	sqlsrv_close($conn);
 }
  
  
@@ -23,6 +30,8 @@ function OpenConnection()
         $conn = sqlsrv_connect($serverName, $connectionOptions);
         if($conn == false)
             die(FormatErrors(sqlsrv_errors()));
+		
+		return $conn;
     }
     catch(Exception $e)
     {
@@ -30,13 +39,10 @@ function OpenConnection()
     }
 }
 
-function InsertData($from, $body)
-{
-	echo '<Response><Message>Thank you for your reply. FROM: '.$from.' BODY: '.$body.'</Message></Response>';
+function InsertData($from, $body, $conn)
+{	
     try
     {
-        $conn = OpenConnection();
-
         $tsql = "INSERT INTO Texting_APP.TextQueue (PhoneNumber, TextContent) VALUES ($from, $body)";
         //Insert query
         $insertReview = sqlsrv_query($conn, $tsql);
