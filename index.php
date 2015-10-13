@@ -7,9 +7,9 @@ $from = $_REQUEST['From'];
 $body = $_REQUEST['Body'];
 echo '<?xml version="1.0" encoding="UTF-8"?>';
 echo '<Response><Message>Thank you for your reply. FROM: '.$from.' BODY: '.$body.'</Message></Response>';
+echo '<AzureConnection>True</AzureConnection>';
 
 $conn = OpenConnection();
-echo 'Connection to Azure Established';
 
 if(!empty($from)) {
 	InsertData($from, $body, $conn);
