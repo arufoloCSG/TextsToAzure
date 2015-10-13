@@ -11,7 +11,7 @@ $conn = OpenConnection();
 echo "Connection Established <br>";
 
 echo "Inserting Data by Executing TSQL Command<br>";
-//InsertData($conn);
+InsertData($conn);
 
 echo "Insert complete";
 
@@ -38,7 +38,7 @@ function InsertData($conn)
 {	
     try
     {
-        $tsql = "INSERT INTO TextQueue (PhoneNumber, TextContent) VALUES (+17047856193, This is a test insert )";
+        $tsql = "INSERT INTO TextQueue (PhoneNumber, TextContent) VALUES ('+17047856193', 'This is a test insert' )";
         //Insert query
         $insertReview = sqlsrv_query($conn, $tsql);
         if($insertReview == FALSE)
