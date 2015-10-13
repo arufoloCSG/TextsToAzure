@@ -11,7 +11,8 @@ echo '<Response><Message>Thank you for your reply. FROM: '.$from.' BODY: '.$body
 $conn = OpenConnection();
 
 if(!empty($from)) {
-	InsertData($from, $body, $conn);
+	//InsertData($from, $body, $conn);
+	sqlsrv_close($conn);
 }
 else
 {
