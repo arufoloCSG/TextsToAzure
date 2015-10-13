@@ -11,7 +11,7 @@ $conn = OpenConnection();
 echo "Connection Established <br>";
 
 echo "Inserting Data by Executing TSQL Command<br>";
-InsertData($conn);
+//InsertData($conn);
 
 echo "Insert complete";
 
