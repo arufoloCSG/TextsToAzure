@@ -36,6 +36,8 @@ function OpenConnection()
 
 function InsertData($conn)
 {	
+echo "Inside The Insert Function <br>";
+/*
     try
     {
         $tsql = "INSERT INTO TextQueue (PhoneNumber, TextContent) VALUES ('+17047856193', 'This is a test insert' )";
@@ -54,6 +56,7 @@ function InsertData($conn)
     {
         echo("Error!");
     }
+	*/
 }
 ?>  
 
