@@ -33,6 +33,31 @@ function OpenConnection()
     }
 }
 
+function InsertData($from, $body)
+{
+    try
+    {
+        $conn = OpenConnection();
+
+        $tsql = "INSERT INTO Texting_APP.TextQueue (PhoneNumber, TextContent) VALUES ($from, $body)";
+        //Insert query
+        $insertReview = sqlsrv_query($conn, $tsql);
+        if($insertReview == FALSE)
+            die(FormatErrors( sqlsrv_errors()));
+        echo "Texting Queue Record Key inserted is :";   
+        while($row = sqlsrv_fetch_array($insertReview, SQLSRV_FETCH_ASSOC))
+        {   
+            echo($row['ID']);
+        }
+        sqlsrv_free_stmt($insertReview);
+        sqlsrv_close($conn);
+    }
+    catch(Exception $e)
+    {
+        echo("Error!");
+    }
+}
+
 ?>
 
 </body>
