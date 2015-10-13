@@ -38,8 +38,8 @@ function InsertData($conn)
 {	
 echo "Inside The Insert Function <br>";
 
-    //try
-    //{
+    try
+    {
         $tsql = "INSERT INTO TextQueue (PhoneNumber, TextContent) VALUES ('+17047856193', 'This is a test insert' )";
         echo "TSQL Query: ".$tsql."<br>";
         $insertReview = sqlsrv_query($conn, $tsql);
@@ -54,15 +54,14 @@ echo "Inside The Insert Function <br>";
         { 
             echo($row['ID']);
         }
-		/*
-        sqlsrv_free_stmt($insertReview);
+		
         sqlsrv_close($conn);
     }
     catch(Exception $e)
     {
         echo("Error!");
     }
-	*/
+	
 }
 ?>  
 
