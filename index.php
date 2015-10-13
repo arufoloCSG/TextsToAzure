@@ -42,12 +42,11 @@ function InsertData($from, $body, $conn)
 {	
     try
     {
-        $tsql = "INSERT INTO Texting_APP.TextQueue (PhoneNumber, TextContent) VALUES ($from, $body)";
+        $tsql = "INSERT INTO Texting_APP.TextQueue (PhoneNumber, TextContent) VALUES (".$from.", ".$body.")";
         //Insert query
         $insertReview = sqlsrv_query($conn, $tsql);
         if($insertReview == FALSE)
-            die(FormatErrors( sqlsrv_errors()));
-        echo "Texting Queue Record Key inserted is :";   
+            die(FormatErrors( sqlsrv_errors())); 
         while($row = sqlsrv_fetch_array($insertReview, SQLSRV_FETCH_ASSOC))
         {   
             echo($row['ID']);
