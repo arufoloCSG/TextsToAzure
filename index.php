@@ -8,7 +8,7 @@ $body = $_REQUEST['Body'];
 echo '<?xml version="1.0" encoding="UTF-8"?>';
 echo '<Response><Message>Thank you for your reply. FROM: '.$from.' BODY: '.$body.'</Message></Response>'; //Place the desired response (if any) here
  
-//InsertData({$_REQUEST['From']}, {$_REQUEST['Body']});
+InsertData($from, $body);
  
  
 function OpenConnection()
