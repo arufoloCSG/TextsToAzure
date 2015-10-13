@@ -42,7 +42,7 @@ function InsertData($from, $body, $conn)
 {	
     try
     {
-        $tsql = "INSERT INTO Texting_APP.TextQueue (PhoneNumber, TextContent) VALUES (".$from.", ".$body.")";
+        $tsql = "INSERT INTO TextQueue (PhoneNumber, TextContent) VALUES (".$from.", ".$body.")";
         //Insert query
         $insertReview = sqlsrv_query($conn, $tsql);
         if($insertReview == FALSE)
