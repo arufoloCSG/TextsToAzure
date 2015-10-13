@@ -3,8 +3,10 @@
  * This section ensures that Twilio gets a response.
  */
 header('Content-type: text/xml');
+$from = {$_REQUEST['From']};
+$body = {$_REQUEST['Body']}
 echo '<?xml version="1.0" encoding="UTF-8"?>';
-echo '<Response><Message>Thank you for your reply.</Message></Response>'; //Place the desired response (if any) here
+echo '<Response><Message>Thank you for your reply. FROM: $from BODY: $body</Message></Response>'; //Place the desired response (if any) here
  
 //InsertData({$_REQUEST['From']}, {$_REQUEST['Body']});
  
