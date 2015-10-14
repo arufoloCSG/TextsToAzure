@@ -8,7 +8,7 @@ $body = $_REQUEST['Body'];
 $to = "+17043438865";
 $caseStudy = "Case Study 1";
 echo '<?xml version="1.0" encoding="UTF-8"?>';
-echo '<Response><Message>Thank you for your reply. FROM: '.$from.' BODY: '.$body.'</Message></Response>';
+echo '<Response><Message>Thank you for your reply to '.$caseStudy.'</Message></Response>';
 
 $conn = OpenConnection();
 
