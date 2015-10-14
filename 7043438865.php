@@ -6,13 +6,14 @@ header('Content-type: text/xml');
 $from = $_REQUEST['From'];
 $body = $_REQUEST['Body'];
 $to = "+17043438865";
+$caseStudy = "Case Study 1";
 echo '<?xml version="1.0" encoding="UTF-8"?>';
 echo '<Response><Message>Thank you for your reply. FROM: '.$from.' BODY: '.$body.'</Message></Response>';
 
 $conn = OpenConnection();
 
 if(!empty($from)) {
-	InsertData($from, $body, $to, $conn);
+	InsertData($from, $body, $to, $caseStudy, $conn);
 	sqlsrv_close($conn);
 }
 else
@@ -40,11 +41,11 @@ function OpenConnection()
     }
 }
 
-function InsertData($from, $body, $to, $conn)
+function InsertData($from, $body, $to, $caseStudy, $conn)
 {	
     try
     {
-        $tsql = "INSERT INTO TextQueue (PhoneNumber, TextContent, TextTo) VALUES ('".$from."', '".$body."', ".$to." )";
+        $tsql = "INSERT INTO TextQueue (PhoneNumber, TextContent, TextTo, CaseStudy) VALUES ('".$from."', '".$body."', ".$to.", ".$caseStudy." )";
         $insertReview = sqlsrv_query($conn, $tsql);
 		
         if($insertReview == FALSE)
