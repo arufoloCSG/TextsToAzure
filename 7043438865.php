@@ -45,7 +45,7 @@ function InsertData($from, $body, $to, $caseStudy, $conn)
 {	
     try
     {
-        $tsql = "INSERT INTO TextQueue (PhoneNumber, TextContent, TextTo, CaseStudy) VALUES ('".$from."', '".$body."', ".$to.", ".$caseStudy." )";
+        $tsql = "INSERT INTO TextQueue (PhoneNumber, TextContent, TextTo, CaseStudy) VALUES ('".$from."', '".$body."', '".$to."', '".$caseStudy."')";
         $insertReview = sqlsrv_query($conn, $tsql);
 		
         if($insertReview == FALSE)
